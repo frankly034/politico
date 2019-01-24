@@ -300,6 +300,23 @@ html {
     margin-left: 3rem;
 }
 
+/* --- background themes --- */
+
+.bg-light-theme {    
+    background-color: #ECF0F1;
+    color: #2C3E50;
+}
+
+.bg-dark-theme {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+}
+
+.bg-primary-theme {
+    background-color: #3498DB;
+    color: #2C3E50;
+}
+
 
 /* --- Responsive Feature --- */
 
