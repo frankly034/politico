@@ -317,6 +317,59 @@ html {
     color: #2C3E50;
 }
 
+/* --- Typography --- */
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.face-100{
+    font-weight: 100;
+}
+
+.face-300{
+    font-weight: 300;
+}
+
+.face-900 {
+    font-weight: 900;
+}
+
+.font-sm {
+    font-size: 0.75rem;
+}
+
+.font-md {
+    font-size: 1.5rem;
+}
+
+.font-lg {
+    font-size: 2rem;
+}
+
+.font-xl {
+    font-size: 3rem;
+}
+
+.light{
+    color: #ECF0F1;
+}
+
+.danger {
+    color: #E74C3C;
+}
+
+.dark {
+    color: #2C3E50;
+}
+
+.primary {
+    color: #3498DB;
+}
 
 /* --- Responsive Feature --- */
 
