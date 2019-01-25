@@ -371,6 +371,30 @@ html {
     color: #3498DB;
 }
 
+.page-title{
+    margin-bottom: 1rem;
+}
+
+.page-title::after{
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 0.2rem;
+    margin-top: 0.5rem;
+}
+
+.bg-dark-theme .page-title::after{
+    background-color: #ECF0F1;
+}
+
+.bg-light-theme .page-title::after{
+    background-color: #2C3E50;
+}
+
+.bg-primary-theme .page-title::after {
+    background-color: #E74C3C;
+}
+
 /* --- form --- */
 
 form {
@@ -440,6 +464,69 @@ form {
 .button-danger-outline:hover{
     color: #ECF0F1;
     background-color: #E74C3C;
+}
+
+/* --- nav --- */
+
+a {
+    text-decoration: none;
+}
+
+.top-nav-pad {
+    margin-top: 70px;
+}
+
+
+.top-nav {
+    position: fixed;
+    top: 0;
+    border-bottom: 1px #ccc solid;
+    width: 100%;
+    padding: 0.3rem 0 0.3rem 2rem;
+    box-shadow: 0 0 2px #E74C3C;
+}
+
+.nav {
+    list-style-type: none;
+    display: none;
+}
+
+.nav-stack li{
+    border-bottom: solid 1px #E74C3C;
+    margin-bottom: 0.5rem;
+}
+
+.nav-stack a {
+    padding: 0.5rem 1rem;
+    display: block;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-delay: 0.5s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.bg-dark-theme  a {
+    color: #3498DB;
+}
+
+.bg-light-theme  a, .bg-primary-theme a {
+    color: #2C3E50;
+}
+
+.nav-stack a:hover {
+    background-color: #3498DB;
+    color: #E74C3C;
+}
+
+.nav-stack li:hover{
+    border: 0;
+    border-bottom: solid 1px #ECF0F1;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 2px #2C3E50;
+}
+
+.toggle-navigation {
+    display: none;
 }
 
 /* --- Responsive Feature --- */
