@@ -573,5 +573,9 @@ a {
     .border-primary-l-lg-1 {
         border-left: #3498DB solid 1px;
     }
+
+    nav .toggler {
+        display: none;
+    }
 }
 
