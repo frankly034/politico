@@ -577,5 +577,9 @@ a {
     nav .toggler {
         display: none;
     }
+
+    .nav.nav-stack{
+        display: block !important;
+    }
 }
 
