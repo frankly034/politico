@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="../css/lib.css">
 </head>
 <body class='bg-light-theme top-nav-pad'>
+    <div class="modal-overlay" id='modal_overlay'></div>
+    <section class='px-3 py-3 modal flex flex-center' id='modalEdit'>
+        <form action="" class='mr-3 bg-light-theme'>
+            <h3 class='face-300 font-md page-title'>Edit Party</h3>
+            <div>
+                <input autofocus type="text" name='name' placeholder='Party Name' class='form-item'>
+            </div>
+            <div>
+                <input type="text" name='hqAddress' placeholder='Headquarters Address' class='form-item'>
+            </div>
+            <div>
+                <label for="logo" class='font-sm'>Upload logo</label>
+                <input type="file" id='logo' name='logo' class='form-item-file'>
+            </div>
+            <div>
+                <button type="button" class='button button-primary' id='edit'>Edit Party</button>
+                <button type="button" class='button button-danger-outline cancel'>Cancel</button>
+            </div>
+        </form>
+    </section>
     <div>
         <header class='flex-row top-nav bg-dark-theme'>
             <h1>Politico</h1>
@@ -43,8 +63,8 @@
                                 </p>
                             </address>
                             <div class='flex-row-sm'>
-                                <section class='mr-3'><button class='button'>Edit</button></section>
-                                <section><button class='button button-danger'>Delete</button></section>
+                                <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                <section><button class='button button-danger showDelete'>Delete</button></section>
                             </div>
                         </section>
                     </div>
@@ -61,8 +81,8 @@
                                 </p>
                             </address>
                             <div class='flex-row-sm'>
-                                <section class='mr-3'><button class='button'>Edit</button></section>
-                                <section><button class='button button-danger'>Delete</button></section>
+                                <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                <section><button class='button button-danger showDelete'>Delete</button></section>
                             </div>
                         </section>
                     </div>
@@ -79,8 +99,8 @@
                                     </p>
                                 </address>
                                 <div class='flex-row-sm'>
-                                    <section class='mr-3'><button class='button'>Edit</button></section>
-                                    <section><button class='button button-danger'>Delete</button></section>
+                                    <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                    <section><button class='button button-danger showDelete'>Delete</button></section>
                                 </div>
                             </section>
                         </div>
@@ -97,8 +117,8 @@
                                     </p>
                                 </address>
                                 <div class='flex-row-sm'>
-                                    <section class='mr-3'><button class='button'>Edit</button></section>
-                                    <section><button class='button button-danger'>Delete</button></section>
+                                    <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                    <section><button class='button button-danger showDelete'>Delete</button></section>
                                 </div>
                             </section>
                         </div>
