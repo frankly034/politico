@@ -10,6 +10,18 @@
 </head>
 
 <body class='bg-light-theme top-nav-pad'>
+    <div class="modal-overlay" id='modal_overlay'></div>
+    <section class='modal flex flex-center' id='modalVote'>
+        <form action="" class='mr-3 bg-light-theme'>
+            <h3 class='face-300 font-md page-title'>Confirm Vote</h3>
+            <p class='font-md face-300 dark my-3'>Are you sure you want to <span class='danger'>vote</span> "this"
+                candidate?</p>
+            <div>
+                <button type="button" class='button button-primary' id='vote'>Vote</button>
+                <button type="button" class='button button-danger' id='cancelVote'>Cancel</button>
+            </div>
+        </form>
+    </section>
     <div>
         <header class='flex-row top-nav bg-dark-theme'>
             <h1>Politico</h1>
@@ -156,7 +168,7 @@
         </footer>
     </div>
 
-    <script src="../../js/lib.js"></script>
+    <script src="../../js/lib2.js"></script>
 </body>
 
 </html>
