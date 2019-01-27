@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Politico | Office</title>
+    <link rel="stylesheet" href="../../css/lib.css">
+</head>
+
+<body class='bg-light-theme top-nav-pad'>
+    <div class="modal-overlay" id='modal_overlay'></div>
+    <section class='modal flex flex-center' id='modalVote'>
+        <form action="" class='mr-3 bg-light-theme'>
+            <h3 class='face-300 font-md page-title'>Confirm Vote</h3>
+            <p class='font-md face-300 dark my-3'>Are you sure you want to <span class='danger'>vote</span> "this"
+                candidate?</p>
+            <div>
+                <button type="button" class='button button-primary' id='vote'>Vote</button>
+                <button type="button" class='button button-danger' id='cancelVote'>Cancel</button>
+            </div>
+        </form>
+    </section>
+    <div>
+        <header class='flex-row top-nav bg-dark-theme'>
+            <h1>Politico</h1>
+        </header>
+
+        <main class='box-75vh'>
+            <div class='flex-row'>
+                <section class='px-3 py-3 ml-2 border-primary-r-lg-1 flex-1 mt-0'>
+                    <nav class=''>
+                        <button class='button mb-2 toggler' data-toggle='#mynav'>
+                            Menu
+                        </button>
+
+                        <ul class='nav nav-stack' id='mynav'>
+                            <li><a href="index.html">Parties</a></li>
+                            <li><a href="../office/index.html">Offices</a></li>
+                            <li><a href="apply.html">Run for Offices</a></li>
+                            <li><a href="#">Password Reset</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+                <section class='px-3 py-3 flex-4 '>
+                    <section class=' card-group-row-2'>
+                        <form action="" class='mr-3'>
+                            <h3 class='face-300 font-md page-title'>Apply For Government Office</h3>
+                            <div>
+                                <select name="type" id="" class='form-item'>
+                                    <option value="">Select Government Office</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select name="type" id="" class='form-item'>
+                                    <option value="">Select Political Party</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" class='button button-primary'>Apply</button>
+                            </div>
+                        </form>
+
+                    </section>
+                </section>
+            </div>
+        </main>
+
+
+        <footer class='flex-row flex-center mt-4 bg-dark-theme py-2'>
+            <p class='px-1 text-center'>&copy; 2019 Lewis Ugege</p>
+        </footer>
+    </div>
+
+    <script src="../../js/lib2.js"></script>
+</body>
+
+</html>
