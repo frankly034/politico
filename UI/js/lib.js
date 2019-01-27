@@ -1,4 +1,6 @@
 const toggleButton = document.querySelector("button.toggler");
+const showEditButton = document.querySelectorAll(".showEdit");
+const cancel = document.querySelectorAll(".cancel");
 
 toggleButton.addEventListener("click", (event)=>{
     const id = event.target.getAttribute("data-toggle");
@@ -6,3 +8,19 @@ toggleButton.addEventListener("click", (event)=>{
     const blockStatus = ul.classList.contains('d-block');
     ul.classList.toggle('d-block', !blockStatus);
 });
+
+const showEditModal = () =>{
+    modal_overlay.classList.add('d-block');
+    modalEdit.classList.add('d-block');
+}
+
+const hideModal = () =>{
+    modal_overlay.classList.remove('d-block');
+    modalEdit.classList.remove('d-block');
+    modalEdit.classList.remove('d-block');
+}
+
+showEditButton.forEach(e=>e.addEventListener('click', showEditModal));
+
+cancel.forEach(e => e.addEventListener('click', hideModal));
+

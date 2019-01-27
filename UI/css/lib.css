@@ -479,6 +479,7 @@ a {
 
 .top-nav-pad {
     margin-top: 70px;
+    z-index: 1;
 }
 
 
@@ -607,6 +608,39 @@ a {
 .card-body-col{
 
 }
+
+/* --- Modal --- */
+
+.modal {
+    display: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1001;
+    padding: 2rem;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(52, 152, 219, 0.8);
+}
+
+.modal form {
+    width: 50%;
+    padding: 2.5rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 5px #2C3E50;
+}
+
 
 /* --- Responsive Feature --- */
 
