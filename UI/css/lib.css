@@ -426,6 +426,10 @@ form {
     width: 90%;
 }
 
+.form-50{
+    width: 50%;
+}
+
 .form-item, .form-item-file{
     width: 100%;
     padding: 0.5rem;
