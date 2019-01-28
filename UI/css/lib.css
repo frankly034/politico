@@ -381,19 +381,19 @@ html, body, .wrapper {
 }
 
 .light{
-    color: #ECF0F1;
+    color: #9ebdc5 !important;
 }
 
 .danger {
-    color: #E74C3C;
+    color: #E74C3C !important;
 }
 
 .dark {
-    color: #2C3E50;
+    color: #2C3E50 !important;
 }
 
 .primary {
-    color: #3498DB;
+    color: #3498DB !important;
 }
 
 .page-title{
