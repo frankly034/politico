@@ -7,13 +7,14 @@
     <title>Politico | Create Party</title>
     <link rel="stylesheet" href="../../css/lib.css">
 </head>
-<body class='bg-light-theme top-nav-pad'>
-    <div>
-        <header class='flex-row top-nav bg-dark-theme'>
-            <h1>Politico</h1>
+<body class='bg-light-theme'>
+    <div class='flex-col wrapper'>
+        <header class='flex-row-sm top-nav bg-dark-theme'>
+            <h1 class='flex-2'><a href="../../index.html" class='light'>Politico</a></a></h1>
+            <span class="font-300 flex-1 text-right pr-2 mr-5 mt-1">Admin</span>
         </header>
 
-        <main class='box-75vh'>
+        <main class='flex-1 mt-6'>
             <div class='flex-row'>
                 <section class='px-3 py-3 ml-2 border-primary-r-lg-1 flex-1 mt-0'>
                     <nav class=''>
@@ -24,24 +25,23 @@
                         <ul class='nav nav-stack' id='mynav'>
                             <li><a href="index.html">Parties</a></li>
                             <li><a href="../office/create.html">Offices</a></li>
-                            <li><a href="#">Password Reset</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="../../index.html">Logout</a></li>
                         </ul>
                     </nav>
                 </section>
 
                 <section class='px-3 py-3 flex-4'>
-                    <form action="" class='mr-3'>
+                    <form action="" class='mr-3 form-50'>
                         <h3 class='face-300 font-md page-title'>New Party</h3>
                         <div>
-                            <input autofocus type="text" name='name' placeholder='Party Name' class='form-item'>
+                            <input required autofocus type="text" name='name' placeholder='Party Name' class='form-item'>
                         </div>
                         <div>
-                            <input type="text" name='hqAddress' placeholder='Headquarters Address' class='form-item'>
+                            <input required type="text" name='hqAddress' placeholder='Headquarters Address' class='form-item'>
                         </div>
                         <div>
                             <label for="logo" class='font-sm'>Upload logo</label>
-                            <input type="file" id='logo' name='logo' class='form-item-file'>
+                            <input required type="file" id='logo' name='logo' class='form-item-file'>
                         </div>
                         <div>
                             <button type="submit" class='button button-primary'>Create Party</button>

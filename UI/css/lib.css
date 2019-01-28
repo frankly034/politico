@@ -12,6 +12,10 @@ html {
     font-family: "Trebuchet MS", Verdana, sans-serif; 
 }
 
+html, body, .wrapper {
+    height: 100%;
+}
+
 /* --- layouts --- */
 
 .flex-row-sm{
@@ -305,6 +309,22 @@ html {
     margin-left: 3rem;
 }
 
+.m-6, .mt-6, .my-6 {
+    margin-top: 5rem;
+}
+
+.m-6, .mx-6, .mr-6 {
+    margin-right: 5rem;
+}
+
+.m-6, .mb-6, .my-6 {
+    margin-bottom: 5rem;
+}
+
+.m-6, .ml-6, .mx-6 {
+    margin-left: 5rem;
+}
+
 /* --- background themes --- */
 
 .bg-light-theme {    
@@ -361,19 +381,19 @@ html {
 }
 
 .light{
-    color: #ECF0F1;
+    color: #ECF0F1 !important;
 }
 
 .danger {
-    color: #E74C3C;
+    color: #E74C3C !important;
 }
 
 .dark {
-    color: #2C3E50;
+    color: #2C3E50 !important;
 }
 
 .primary {
-    color: #3498DB;
+    color: #3498DB !important;
 }
 
 .page-title{
@@ -410,9 +430,10 @@ form {
     width: 100%;
     padding: 0.5rem;
     margin: 0.5rem 0;
+    border-radius: 4px;
     transition-property: all;
-    transition-duration: 2s;
-    transition-delay: 0.5s;
+    transition-duration: 1s;
+    transition-delay: 0.3s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
 }
 
@@ -421,8 +442,8 @@ form {
     transform: scaleY(1.1)
 }
 
-.form-item:hover, .form-item-file:hover{
-    box-shadow: 0 0 5px #2980B9;
+.form-item:focus, .form-item-file:focus, .form-item:hover, .form-item-file:hover{
+    box-shadow: 0 0 1px #2980B9;
 }
 
 .button {
@@ -431,9 +452,10 @@ form {
     border: 1px #2980B9 solid;
     padding: 0.5rem 1rem;
     margin-top: 0.5rem;
+    border-radius: 4px;
     color: #3498DB;
     transition-property: all;
-    transition-duration: 2s;
+    transition-duration: 1s;
     transition-delay: 0.5s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1)
 }
@@ -489,7 +511,6 @@ a {
     border-bottom: 1px #ccc solid;
     width: 100%;
     padding: 0.3rem 0 0.3rem 2rem;
-    box-shadow: 0 0 2px #E74C3C;
 }
 
 .nav {
@@ -506,7 +527,7 @@ a {
     padding: 0.5rem 1rem;
     display: block;
     transition-property: all;
-    transition-duration: 2s;
+    transition-duration: 1s;
     transition-delay: 0.5s;
     transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
 }
@@ -521,7 +542,7 @@ a {
 
 .nav-stack a:hover {
     background-color: #3498DB;
-    color: #E74C3C;
+    color: #ECF0F1;
 }
 
 .nav-stack li:hover{
@@ -542,6 +563,7 @@ a {
     box-shadow: 1px 1px 5px #2980B9;
     padding: 0.5rem;
     margin-bottom: 2rem !important;
+    border-radius: 4px;
 }
 
 .card-dark {
@@ -605,10 +627,6 @@ a {
     flex-direction: column;
 }
 
-.card-body-col{
-
-}
-
 /* --- Modal --- */
 
 .modal {
@@ -637,6 +655,7 @@ a {
     margin: 0 auto;
     box-sizing: border-box;
     box-shadow: 1px 1px 5px #2C3E50;
+    border-radius: 4px;
 }
 
 
@@ -704,6 +723,11 @@ a {
     .modal form {
         width: 50%;
     }
+
+    .form-50{
+        width: 50%;
+    }
+    
         
 }
 

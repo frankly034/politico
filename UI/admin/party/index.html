@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="../../css/lib.css">
 </head>
 
-<body class='bg-light-theme top-nav-pad'>
+<body class='bg-light-theme'>
     <div class="modal-overlay" id='modal_overlay'></div>
     <section class='modal flex flex-center' id='modalEdit'>
         <form action="" class='mr-3 bg-light-theme'>
             <h3 class='face-300 font-md page-title'>Edit Party</h3>
             <div>
-                <input autofocus type="text" name='name' placeholder='Party Name' class='form-item'>
+                <input required autofocus type="text" name='name' placeholder='Party Name' class='form-item'>
             </div>
             <div>
-                <input type="text" name='hqAddress' placeholder='Headquarters Address' class='form-item'>
+                <input required type="text" name='hqAddress' placeholder='Headquarters Address' class='form-item'>
             </div>
             <div>
                 <label for="logo" class='font-sm'>Upload logo</label>
-                <input type="file" id='logo' name='logo' class='form-item-file'>
+                <input required type="file" id='logo' name='logo' class='form-item-file'>
             </div>
             <div>
                 <button type="button" class='button button-primary' id='edit'>Edit Party</button>
@@ -41,12 +41,13 @@
             </div>
         </form>
     </section>
-    <div>
-        <header class='flex-row top-nav bg-dark-theme'>
-            <h1>Politico</h1>
+    <div class='flex-col wrapper'>
+        <header class='flex-row-sm top-nav bg-dark-theme'>
+            <h1 class='flex-2'><a href="../../index.html" class='light'>Politico</a></a></h1>
+            <span class="font-300 flex-1 text-right pr-2 mr-5 mt-1">Admin</span>
         </header>
 
-        <main class='box-75vh'>
+        <main class='mt-6 flex-1'>
             <div class='flex-row'>
                 <section class='px-3 py-3 ml-2 border-primary-r-lg-1 flex-1 mt-0'>
                     <nav class=''>
@@ -57,8 +58,7 @@
                         <ul class='nav nav-stack' id='mynav'>
                             <li><a href="index.html">Parties</a></li>
                             <li><a href="../office/create.html">Offices</a></li>
-                            <li><a href="#">Password Reset</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="../../index.html">Logout</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -67,7 +67,7 @@
                     <header class='flex-row-sm'>
                         <h1 class="page-title mb-5 flex-2">Political Parties</h1>
                         <span class='flex-1 text-center'>
-                            <a class='button button-primary' href='create.html'>New Party</a>
+                            <a class='button button-primary' href='create.html'>Create Party</a>
                         </span>                        
                     </header>
                     

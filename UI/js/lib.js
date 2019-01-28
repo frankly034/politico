@@ -34,3 +34,14 @@ showDeleteButton.forEach(e=>e.addEventListener('click', showDeleteModal));
 
 cancel.forEach(e => e.addEventListener('click', hideModal));
 
+modal_overlay.addEventListener('click', ()=>{
+    hideModal();
+});
+
+// modalDelete.addEventListener('click', ()=>{
+//     hideModal();
+// });
+
+// modalEdit.addEventListener('click', ()=>{
+//     hideModal();
+// })
