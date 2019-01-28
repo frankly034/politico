@@ -21,3 +21,11 @@ toggleButton.addEventListener("click", (event)=>{
 voteButtons.forEach(e=>e.addEventListener('click', showVoteModal));
 
 cancelVote.addEventListener('click',hideVoteModal);
+
+modal_overlay.addEventListener('click', ()=>{
+    hideModal();
+});
+
+// modalVote.addEventListener('click', ()=>{
+//     hideModal();
+// });
