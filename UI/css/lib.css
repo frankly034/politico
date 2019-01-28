@@ -12,6 +12,10 @@ html {
     font-family: "Trebuchet MS", Verdana, sans-serif; 
 }
 
+html, body, .wrapper {
+    height: 100%;
+}
+
 /* --- layouts --- */
 
 .flex-row-sm{
