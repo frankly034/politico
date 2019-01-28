@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Politico | Parties</title>
-    <link rel="stylesheet" href="../css/lib.css">
+    <link rel="stylesheet" href="../../css/lib.css">
 </head>
+
 <body class='bg-light-theme top-nav-pad'>
     <div class="modal-overlay" id='modal_overlay'></div>
     <section class='modal flex flex-center' id='modalEdit'>
@@ -31,7 +33,8 @@
     <section class='modal flex flex-center' id='modalDelete'>
         <form action="" class='mr-3 bg-light-theme'>
             <h3 class='face-300 font-md page-title'>Delete Party</h3>
-            <p class='font-md face-300 dark my-3'>Are you sure you want to <span class='danger'>delete</span> "this" party?</p>
+            <p class='font-md face-300 dark my-3'>Are you sure you want to <span class='danger'>delete</span> "this"
+                party?</p>
             <div>
                 <button type="button" class='button button-primary' id='edit'>Delete</button>
                 <button type="button" class='button button-danger-outline cancel'>Cancel</button>
@@ -50,74 +53,28 @@
                         <button class='button mb-2 toggler' data-toggle='#mynav'>
                             Menu
                         </button>
-                    
+
                         <ul class='nav nav-stack' id='mynav'>
-                            <li><a href="/party/index.html">Parties</a></li>
-                            <li><a href="/office/index.html">Offices</a></li>
+                            <li><a href="index.html">Parties</a></li>
+                            <li><a href="../office/create.html">Offices</a></li>
                             <li><a href="#">Password Reset</a></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
                     </nav>
                 </section>
 
-                <section class='px-3 py-3 flex-4 card-group-row-2'>
-                    <div class='card card-light card-row'>
-                        <section class='card-50 card-head'>
-                            <img src="../images/party/logo.svg" alt="Logo">
-                        </section>
-                        <section class='card-50 card-body'>
-                            <h3 class='card-title'>People's Democratic Party</h3>
-                            <address class='card-text'>
-                                <p>
-                                    235 Ikorodu Road, Ilupeju, Lagos.
-                                </p>
-                            </address>
-                            <div class='flex-row-sm'>
-                                <section class='mr-3'><button class='button showEdit'>Edit</button></section>
-                                <section><button class='button button-danger showDelete'>Delete</button></section>
-                            </div>
-                        </section>
-                    </div>
-
-                    <div class='card card-light card-row'>
-                        <section class='card-50 card-head'>
-                            <img src="../images/party/logo.svg" alt="Logo">
-                        </section>
-                        <section class='card-50 card-body'>
-                            <h3 class='card-title'>People's Democratic Party</h3>
-                            <address class='card-text'>
-                                <p>
-                                    235 Ikorodu Road, Ilupeju, Lagos.
-                                </p>
-                            </address>
-                            <div class='flex-row-sm'>
-                                <section class='mr-3'><button class='button showEdit'>Edit</button></section>
-                                <section><button class='button button-danger showDelete'>Delete</button></section>
-                            </div>
-                        </section>
-                    </div>
-
-                    <div class='card card-light card-row'>
-                            <section class='card-50 card-head'>
-                                <img src="../images/party/logo.svg" alt="Logo">
-                            </section>
-                            <section class='card-50 card-body'>
-                                <h3 class='card-title'>People's Democratic Party</h3>
-                                <address class='card-text'>
-                                    <p>
-                                        235 Ikorodu Road, Ilupeju, Lagos.
-                                    </p>
-                                </address>
-                                <div class='flex-row-sm'>
-                                    <section class='mr-3'><button class='button showEdit'>Edit</button></section>
-                                    <section><button class='button button-danger showDelete'>Delete</button></section>
-                                </div>
-                            </section>
-                        </div>
-    
+                <section class='px-3 py-3 flex-4 '>
+                    <header class='flex-row-sm'>
+                        <h1 class="page-title mb-5 flex-2">Political Parties</h1>
+                        <span class='flex-1 text-center'>
+                            <a class='button button-primary' href='create.html'>New Party</a>
+                        </span>                        
+                    </header>
+                    
+                    <section class=' card-group-row-2'>
                         <div class='card card-light card-row'>
                             <section class='card-50 card-head'>
-                                <img src="../images/party/logo.svg" alt="Logo">
+                                <img src="../../images/party/logo.svg" alt="Logo">
                             </section>
                             <section class='card-50 card-body'>
                                 <h3 class='card-title'>People's Democratic Party</h3>
@@ -132,17 +89,72 @@
                                 </div>
                             </section>
                         </div>
-                    
+
+                        <div class='card card-light card-row'>
+                            <section class='card-50 card-head'>
+                                <img src="../../images/party/logo.svg" alt="Logo">
+                            </section>
+                            <section class='card-50 card-body'>
+                                <h3 class='card-title'>People's Democratic Party</h3>
+                                <address class='card-text'>
+                                    <p>
+                                        235 Ikorodu Road, Ilupeju, Lagos.
+                                    </p>
+                                </address>
+                                <div class='flex-row-sm'>
+                                    <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                    <section><button class='button button-danger showDelete'>Delete</button></section>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class='card card-light card-row'>
+                            <section class='card-50 card-head'>
+                                <img src="../../images/party/logo.svg" alt="Logo">
+                            </section>
+                            <section class='card-50 card-body'>
+                                <h3 class='card-title'>People's Democratic Party</h3>
+                                <address class='card-text'>
+                                    <p>
+                                        235 Ikorodu Road, Ilupeju, Lagos.
+                                    </p>
+                                </address>
+                                <div class='flex-row-sm'>
+                                    <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                    <section><button class='button button-danger showDelete'>Delete</button></section>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class='card card-light card-row'>
+                            <section class='card-50 card-head'>
+                                <img src="../../images/party/logo.svg" alt="Logo">
+                            </section>
+                            <section class='card-50 card-body'>
+                                <h3 class='card-title'>People's Democratic Party</h3>
+                                <address class='card-text'>
+                                    <p>
+                                        235 Ikorodu Road, Ilupeju, Lagos.
+                                    </p>
+                                </address>
+                                <div class='flex-row-sm'>
+                                    <section class='mr-3'><button class='button showEdit'>Edit</button></section>
+                                    <section><button class='button button-danger showDelete'>Delete</button></section>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
                 </section>
             </div>
         </main>
-        
+
 
         <footer class='flex-row flex-center mt-4 bg-dark-theme py-2'>
             <p class='px-1 text-center'>&copy; 2019 Lewis Ugege</p>
         </footer>
     </div>
-    
-    <script src="../js/lib.js"></script>
+
+    <script src="../../js/lib.js"></script>
 </body>
+
 </html>
