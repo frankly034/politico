@@ -309,6 +309,22 @@ html, body, .wrapper {
     margin-left: 3rem;
 }
 
+.m-6, .mt-6, .my-6 {
+    margin-top: 5rem;
+}
+
+.m-6, .mx-6, .mr-6 {
+    margin-right: 5rem;
+}
+
+.m-6, .mb-6, .my-6 {
+    margin-bottom: 5rem;
+}
+
+.m-6, .ml-6, .mx-6 {
+    margin-left: 5rem;
+}
+
 /* --- background themes --- */
 
 .bg-light-theme {    
