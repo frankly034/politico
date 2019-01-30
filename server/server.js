@@ -7,8 +7,13 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(partyRoute);
 
-app.listen(port);
+const apiUrlVersion1 = '/api/v1';
+
+app.use(apiUrlVersion1, partyRoute);
+
+if (!module.parent) {
+  app.listen(port);
+}
 
 export default app;

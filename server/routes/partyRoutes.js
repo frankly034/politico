@@ -4,8 +4,6 @@ import PartyMiddleware from '../middlewares/partyMiddleware';
 
 const router = express.Router();
 
-const apiUrl = '/api/v1/parties';
-
-router.post(apiUrl, PartyMiddleware.create, PartyController.createParty);
+router.post('/parties', PartyMiddleware.create, PartyController.createParty);
 
 export default router;
