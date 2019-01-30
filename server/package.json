@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --require babel-register app.js",
     "server": "nodemon --require babel-register server.js",
-    "test": "mocha --require babel-register --reporter test"
+    "test": "mocha --require babel-register test"
   },
   "keywords": [],
   "author": "",
