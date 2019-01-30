@@ -13,6 +13,10 @@ class PartyController {
 
     return res.status(200).send({ status: 200, data: party });
   }
+
+  static listParty(req, res) {
+    return res.send(PartyModel.findAll());
+  }
 }
 
 export default PartyController;
