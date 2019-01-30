@@ -10,3 +10,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(partyRoute);
 
 app.listen(port);
+
+export default app;
