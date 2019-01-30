@@ -14,6 +14,10 @@ class PartyModel {
     parties.push(newParty);
     return newParty;
   }
+
+  static findAll() {
+    return parties;
+  }
 }
 
 export default PartyModel;
