@@ -2,8 +2,9 @@ import PartyModel from '../models/partyModel';
 
 class PartyController {
   static createParty(req, res) {
-    if (req.error) {
-      return res.status(req.error.status).send({ status: req.error.status, error: req.error.msg });
+    const { error } = req;
+    if (error) {
+      return res.status(error.status).send(error);
     }
 
     const { name, hqAddress, logoUrl } = req.body;
