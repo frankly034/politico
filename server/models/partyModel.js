@@ -9,7 +9,8 @@ class PartyModel {
   }
 
   static create(party) {
-    const newParty = new PartyModel(party);
+    const id = parties.length + 1;
+    const newParty = new PartyModel({ id, ...party });
     parties.push(newParty);
     return newParty;
   }
