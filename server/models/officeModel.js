@@ -4,7 +4,7 @@ class OfficeModel {
   constructor(office) {
     this.id = office.id;
     this.name = office.name;
-    this.type = office.hqAddress;
+    this.type = office.type;
   }
 
   static create(office) {
