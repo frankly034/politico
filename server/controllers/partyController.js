@@ -16,7 +16,7 @@ class PartyController {
 
   static getAParty(req, res) {
     const { id } = req.params;
-    const party = PartyModel.getAnOffice(id);
+    const party = PartyModel.getAParty(id);
     if (party.length === 0) {
       return res.status(404).send({ status: 404, msg: 'Resource not found' });
     }
