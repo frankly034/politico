@@ -19,6 +19,10 @@ class PartyModel {
     const foundParty = parties.filter(party => party.id === parseInt(id, 10));
     return foundParty;
   }
+  
+  static findAll() {
+    return parties;
+  }
 }
 
 export default PartyModel;

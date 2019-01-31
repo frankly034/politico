@@ -61,3 +61,16 @@ describe('GET /parties/:id', () => {
       .end(done);
   });
 });
+  
+describe('GET /parties', () => {
+  it('should get all parties', (done) => {
+    request(app)
+      .get(apiUrl)
+      .expect(200)
+      .expect((res) => {
+        const body = res.body.data;
+        expect(body.length).to.equal(parties.length);
+      })
+      .end(done);
+  });
+});

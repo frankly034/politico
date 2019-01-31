@@ -21,6 +21,10 @@ class PartyController {
       return res.status(404).send({ status: 404, msg: 'Resource not found' });
     }
     return res.status(200).send({ status: 200, data: party.shift() });
+
+  static listParty(req, res) {
+    const parties = PartyModel.findAll();
+    return res.status(200).send({ status: 200, data: parties });
   }
 }
 
