@@ -45,3 +45,31 @@ describe('GET /offices', () => {
       .end(done);
   });
 });
+
+describe('GET /offices/:id', () => {
+  it('should return a specific office', (done) => {
+    request(app)
+      .get(`${apiUrl}/1`)
+      .expect(200)
+      .expect((res) => {
+        const queryOffice = offices.filter(item => item.id === 1).shift();
+        const office = res.body.data;
+        expect(office).to.deep.equal(queryOffice);
+      })
+      .end(done);
+  });
+  
+  it('should return 400: bad request, non-number id', (done) => {
+    request(app)
+      .get(`${apiUrl}/aa`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 404: resource not found', (done) => {
+    request(app)
+      .get(`${apiUrl}/10`)
+      .expect(404)
+      .end(done);
+  });
+});
