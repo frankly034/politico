@@ -2,9 +2,10 @@ class OfficeMiddleware {
   static create(req, res, next) {
     const { name, type } = req.body;
     if (!name || !type) {
-      req.error = { msg: 'name and type attributes are required', status: 400 };
+      const error = { msg: 'name and type attributes are required', status: 400 };
+      return res.status(400).send(error);
     }
-    next();
+    return next();
   }
 }
 
