@@ -14,6 +14,11 @@ class PartyModel {
     parties.push(newParty);
     return newParty;
   }
+
+  static getAParty(id) {
+    const foundParty = parties.filter(party => party.id === parseInt(id, 10));
+    return foundParty;
+  }
 }
 
 export default PartyModel;
