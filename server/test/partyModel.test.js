@@ -41,7 +41,6 @@ describe('GET /parties/:id', () => {
       .expect((res) => {
         const queryParty = parties.filter(item => item.id === 1).shift();
         const party = res.body.data;
-        console.log(queryParty, party);
         expect(party).to.deep.equal(queryParty);
       })
       .end(done);
@@ -71,6 +70,33 @@ describe('GET /parties', () => {
         const body = res.body.data;
         expect(body.length).to.equal(parties.length);
       })
+      .end(done);
+  });
+});
+
+describe('DELETE /parties/:id', () => {
+  it('should delete a specific party', (done) => {
+    request(app)
+      .delete(`${apiUrl}/1`)
+      .expect(200)
+      .expect((res) => {
+        const deleteStatus = res.body.data[0].message;
+        expect(deleteStatus).to.have.string('success');
+      })
+      .end(done);
+  });
+
+  it('should return 400: bad request, non-number id', (done) => {
+    request(app)
+      .delete(`${apiUrl}/aa`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 404: resource not found', (done) => {
+    request(app)
+      .delete(`${apiUrl}/10`)
+      .expect(404)
       .end(done);
   });
 });
