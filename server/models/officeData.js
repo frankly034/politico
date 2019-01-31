@@ -5,12 +5,12 @@ const data = [
     name: 'governor',
   },
   {
-    id: 1,
+    id: 2,
     type: 'federal',
     name: 'president',
   },
   {
-    id: 1,
+    id: 3,
     type: 'state',
     name: 'state house of rep',
   },
