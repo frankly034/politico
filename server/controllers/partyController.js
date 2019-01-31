@@ -1,4 +1,4 @@
-import PartyModel from '../models/partyModel';
+import PartyModel from '../models/PartyModel';
 
 class PartyController {
   static createParty(req, res) {
@@ -12,6 +12,11 @@ class PartyController {
     const party = PartyModel.create(body);
 
     return res.status(200).send({ status: 200, data: party });
+  }
+
+  static listParty(req, res) {
+    const parties = PartyModel.findAll();
+    return res.status(200).send({ status: 200, data: parties });
   }
 }
 
