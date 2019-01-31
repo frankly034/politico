@@ -100,3 +100,34 @@ describe('DELETE /parties/:id', () => {
       .end(done);
   });
 });
+
+describe('PATCH /parties/:id/name', () => {
+  const name = 'Party Andela';
+  it('should edit a specific party name', (done) => {
+    request(app)
+      .patch(`${apiUrl}/1/name`)
+      .send({ name })
+      .expect(200)
+      .expect((res) => {
+        const editedParty = res.body.data;
+        expect(editedParty.name).to.equal(name);
+      })
+      .end(done);
+  });
+
+  it('should return 400: bad request, non-number id', (done) => {
+    request(app)
+      .patch(`${apiUrl}/aa/name`)
+      .send(name)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 404: resource not found', (done) => {
+    request(app)
+      .patch(`${apiUrl}/10/name`)
+      .send(name)
+      .expect(404)
+      .end(done);
+  });
+});

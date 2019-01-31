@@ -36,6 +36,16 @@ class PartyController {
     }
     return res.status(200).send({ status: 200, data: [{ message: 'Party successfully deleted' }] });
   }
+
+  static editAParty(req, res) {
+    const { id } = req.params;
+    const { name } = req.body;
+    const editedParty = PartyModel.editAParty(id, name);
+    if (editedParty === null) {
+      return res.status(404).send({ status: 404, msg: 'Resource not found' });
+    }
+    return res.status(200).send({ status: 200, data: editedParty });
+  }
 }
 
 export default PartyController;
