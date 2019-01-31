@@ -10,7 +10,7 @@ class PartyMiddleware {
 
   static getAParty(req, res, next) {
     const { id } = req.params;
-    if (isNaN(parseInt(id, 10))) {
+    if (Number.isNaN(parseInt(id, 10))) {
       const error = { msg: 'Bad request', status: 400 };
       return res.status(400).send(error);
     }
