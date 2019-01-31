@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --require babel-register app.js",
+    "start": "node server.js",
     "server": "nodemon --require babel-register server.js",
     "test": "mocha --require babel-register test"
   },
