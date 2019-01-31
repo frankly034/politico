@@ -15,7 +15,8 @@ class PartyController {
   }
 
   static listParty(req, res) {
-    return res.send(PartyModel.findAll());
+    const parties = PartyModel.findAll();
+    return res.status(200).send({ status: 200, data: parties });
   }
 }
 
