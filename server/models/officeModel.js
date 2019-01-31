@@ -17,6 +17,11 @@ class OfficeModel {
   static getAllOffices() {
     return offices;
   }
+
+  static getAnOffice(id) {
+    const foundOffice = offices.filter(office => office.id === id);
+    return foundOffice;
+  }
 }
 
 export default OfficeModel;
