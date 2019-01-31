@@ -33,6 +33,35 @@ describe('POST /parties', () => {
   });
 });
 
+describe('GET /parties/:id', () => {
+  it('should return a specific party', (done) => {
+    request(app)
+      .get(`${apiUrl}/1`)
+      .expect(200)
+      .expect((res) => {
+        const queryParty = parties.filter(item => item.id === 1).shift();
+        const party = res.body.data;
+        console.log(queryParty, party);
+        expect(party).to.deep.equal(queryParty);
+      })
+      .end(done);
+  });
+  
+  it('should return 400: bad request, non-number id', (done) => {
+    request(app)
+      .get(`${apiUrl}/aa`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 404: resource not found', (done) => {
+    request(app)
+      .get(`${apiUrl}/10`)
+      .expect(404)
+      .end(done);
+  });
+});
+  
 describe('GET /parties', () => {
   it('should get all parties', (done) => {
     request(app)
