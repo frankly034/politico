@@ -13,6 +13,10 @@ class OfficeModel {
     offices.push(newOffice);
     return newOffice;
   }
+
+  static getAllOffices() {
+    return offices;
+  }
 }
 
 export default OfficeModel;

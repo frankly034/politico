@@ -13,6 +13,11 @@ class OfficeController {
 
     return res.status(200).send({ status: 200, data: office });
   }
+
+  static getAllOffices(req, res) {
+    const offices = OfficeModel.getAllOffices();
+    return res.status(200).send({ status: 200, data: offices });
+  }
 }
 
 export default OfficeController;
