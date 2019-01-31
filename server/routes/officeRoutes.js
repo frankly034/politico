@@ -5,5 +5,6 @@ import OfficeMiddleware from '../middlewares/officeMiddleware';
 const router = express.Router();
 
 router.post('/offices', OfficeMiddleware.create, OfficeController.createOffice);
+router.get('/offices', OfficeController.getAllOffices);
 
 export default router;
