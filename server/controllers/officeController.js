@@ -18,6 +18,15 @@ class OfficeController {
     const offices = OfficeModel.getAllOffices();
     return res.status(200).send({ status: 200, data: offices });
   }
+
+  static getAnOffice(req, res) {
+    const { id } = req.params;
+    const office = OfficeModel.getAnOffice(id);
+    if (office.length === 0) {
+      return res.status(404).send({ status: 404, msg: 'Resource not found' });
+    }
+    return res.status(200).send({ status: 200, data: office.shift() });
+  }
 }
 
 export default OfficeController;
