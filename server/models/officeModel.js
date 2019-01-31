@@ -19,7 +19,7 @@ class OfficeModel {
   }
 
   static getAnOffice(id) {
-    const foundOffice = offices.filter(office => office.id === id);
+    const foundOffice = offices.filter(office => office.id === parseInt(id, 10));
     return foundOffice;
   }
 }

@@ -10,7 +10,7 @@ class OfficeMiddleware {
 
   static getAnOffice(req, res, next) {
     const { id } = req.params;
-    if (typeof Number(id) !== 'number') {
+    if (isNaN(parseInt(id, 10))) {
       const error = { msg: 'Bad request', status: 400 };
       return res.status(400).send(error);
     }
