@@ -19,9 +19,14 @@ class PartyModel {
     const foundParty = parties.filter(party => party.id === parseInt(id, 10));
     return foundParty;
   }
-  
+
   static findAll() {
     return parties;
+  }
+
+  static deleteAParty(id) {
+    const returnedParties = parties.filter(party => party.id !== parseInt(id, 10));
+    return returnedParties.length < parties.length ? 1 : 0;
   }
 }
 

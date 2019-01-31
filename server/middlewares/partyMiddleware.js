@@ -16,6 +16,15 @@ class PartyMiddleware {
     }
     return next();
   }
+
+  static deleteAParty(req, res, next) {
+    const { id } = req.params;
+    if (Number.isNaN(parseInt(id, 10))) {
+      const error = { msg: 'Bad request', status: 400 };
+      return res.status(400).send(error);
+    }
+    return next();
+  }
 }
 
 export default PartyMiddleware;
