@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon --require babel-register server.js",
-    "test": "mocha --require babel-register test"
+    "start": "node --require babel-register ./server/server.js",
+    "server": "nodemon --require babel-register ./server/server.js",
+    "test": "mocha --require babel-register ./server/test"
   },
   "keywords": [],
   "author": "",

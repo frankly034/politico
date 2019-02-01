@@ -1,6 +1,6 @@
 import express from 'express';
-import OfficeController from '../controllers/OfficeController';
-import OfficeMiddleware from '../middlewares/OfficeMiddleware';
+import OfficeController from '../controllers/officeController';
+import OfficeMiddleware from '../middlewares/officeMiddleware';
 
 const router = express.Router();
 

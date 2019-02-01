@@ -1,6 +1,6 @@
 import express from 'express';
-import PartyController from '../controllers/PartyController';
-import PartyMiddleware from '../middlewares/PartyMiddleware';
+import PartyController from '../controllers/partyController';
+import PartyMiddleware from '../middlewares/partyMiddleware';
 
 const router = express.Router();
 
