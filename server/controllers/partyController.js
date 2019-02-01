@@ -1,4 +1,4 @@
-import PartyModel from '../models/PartyModel';
+import PartyModel from '../models/partyModel';
 
 class PartyController {
   static createParty(req, res) {
