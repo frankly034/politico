@@ -41,6 +41,23 @@ class UserModel {
         Promise.reject(new Error(e));
       });
   }
+
+  save() {
+    const user = this;
+
+    const attributes = ['firstname', 'lastname', 'othername', 'email', 'phonenumber', 'passporturl', 'password', 'isadmin'];
+
+    const userArray = attributes.map(attr => user[attr]);
+
+    const sql = 'INSERT INTO users (firstname, lastname, othername, email, phonenumber, passporturl, password, isadmin) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+
+    return query(sql, userArray)
+      .then((result) => {
+        const savedUser = new UserModel(result.rows[0]);
+        return Promise.resolve(savedUser);
+      })
+      .catch(e => Promise.reject(e));
+  }
 }
 
 export default UserModel;
