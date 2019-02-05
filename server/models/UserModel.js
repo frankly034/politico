@@ -29,6 +29,18 @@ class UserModel {
         .catch(() => reject()));
     });
   }
+
+  // function needs the multer middleware to work properly
+  static createUser(body) {
+    const user = new UserModel(body);
+    return user.setHashPassword()
+      .then(() => Promise.resolve(user.save()))
+      .then(returnedUser => TokenModel.saveToken(returnedUser, 'auth'))
+      .then(() => user)
+      .catch((e) => {
+        Promise.reject(new Error(e));
+      });
+  }
 }
 
 export default UserModel;
