@@ -2,11 +2,6 @@ import PartyModel from '../models/PartyModel';
 
 class PartyController {
   static createParty(req, res) {
-    const { error } = req;
-    if (error) {
-      return res.status(error.status).send(error);
-    }
-
     const { name, hqAddress, logoUrl } = req.body;
     const body = { name, hqAddress, logoUrl };
     const party = PartyModel.create(body);
