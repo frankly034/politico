@@ -36,7 +36,15 @@ class UserModel {
     return user.setHashPassword()
       .then(() => Promise.resolve(user.save()))
       .then(returnedUser => TokenModel.saveToken(returnedUser, 'auth'))
-      .then(() => user)
+      .then((savedToken) => {
+        user.id = savedToken.user_id;
+        const {
+          id, firstname, lastname, othername, email, phonenumber, passporturl, isadmin,
+        } = user;
+        return Promise.resolve({
+          id, firstname, lastname, othername, email, phonenumber, passporturl, isadmin,
+        });
+      })
       .catch((e) => {
         Promise.reject(new Error(e));
       });

@@ -39,14 +39,12 @@ class TokenModel {
   }
 
   static saveToken(user, access) {
-    TokenModel.generateToken(access, user)
+    return TokenModel.generateToken(access, user)
       .then((token) => {
         const saveToken = new TokenModel(token, access, user);
-        Promise.resolve(saveToken.save());
+        return Promise.resolve(saveToken.save());
       })
-      .catch((e) => {
-        throw Promise.reject(e);
-      });
+      .catch(e => Promise.reject(e));
   }
 
   save() {
@@ -54,7 +52,7 @@ class TokenModel {
     const tokenArray = [token.token, token.access, token.user.id];
     const sql = 'INSERT INTO tokens (token, access, user_id) VALUES ($1, $2, $3) RETURNING *';
 
-    query(sql, tokenArray)
+    return query(sql, tokenArray)
       .then(result => Promise.resolve(result.rows[0]))
       .catch(e => Promise.reject(e));
   }
