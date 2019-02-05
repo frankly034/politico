@@ -42,7 +42,10 @@ class UserModel {
           id, firstname, lastname, othername, email, phonenumber, passporturl, isadmin,
         } = user;
         return Promise.resolve({
-          id, firstname, lastname, othername, email, phonenumber, passporturl, isadmin,
+          token: savedToken.token,
+          user: {
+            id, firstname, lastname, othername, email, phonenumber, passporturl, isadmin,
+          },
         });
       })
       .catch((e) => {

@@ -17,7 +17,7 @@ class UserController {
         return Promise.resolve(body);
       })
       .then(() => UserModel.createUser(body))
-      .then(result => res.status(201).send({ status: 201, data: result }))
+      .then(result => res.status(201).send({ status: 201, token: result.token, data: result.user }))
       .catch(() => res.status(500).send({ status: 500, message: 'Internal server error.' }));
   }
 }
