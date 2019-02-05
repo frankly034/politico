@@ -2,3 +2,4 @@ node_modules/
 .env
 _test.js
 test.js
+server/test/userModel.test.js
