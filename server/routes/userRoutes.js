@@ -6,5 +6,6 @@ import UserMiddleware from '../middlewares/UserMiddleware';
 const router = express.Router();
 
 router.post('/auth/signup', multerUploadMiddleware('passportUrl'), UserMiddleware.create, UserController.createUser);
+router.post('/auth/login', UserController.loginUser);
 
 export default router;
