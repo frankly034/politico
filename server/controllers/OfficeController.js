@@ -2,30 +2,23 @@ import OfficeModel from '../models/OfficeModel';
 
 class OfficeController {
   static createOffice(req, res) {
-    const { error } = req;
-    if (error) {
-      return res.status(error.status).send(error);
-    }
-
     const { name, type } = req.body;
-    const body = { name, type };
-    const office = OfficeModel.create(body);
-
-    return res.status(200).send({ status: 200, data: office });
+    OfficeModel.create({ name, type })
+      .then(createdOffice => res.status(201).send({ status: 201, data: createdOffice }))
+      .catch(() => res.status(500).send({ status: 500, error: 'Server error, please try again.' }));
   }
 
   static getAllOffices(req, res) {
-    const offices = OfficeModel.getAllOffices();
-    return res.status(200).send({ status: 200, data: offices });
+    OfficeModel.getAllOffices()
+      .then(offices => res.status(200).send({ status: 200, data: offices }))
+      .catch(() => res.status(404).send({ status: 404, error: 'No offices found.' }));
   }
 
   static getAnOffice(req, res) {
     const { id } = req.params;
-    const office = OfficeModel.getAnOffice(id);
-    if (office.length === 0) {
-      return res.status(404).send({ status: 404, msg: 'Resource not found' });
-    }
-    return res.status(200).send({ status: 200, data: office.shift() });
+    OfficeModel.getAnOffice(id)
+      .then(returnedOffice => res.status(200).send({ status: 200, data: returnedOffice }))
+      .catch(() => res.status(404).send({ status: 404, error: 'Office not found.' }));
   }
 }
 
