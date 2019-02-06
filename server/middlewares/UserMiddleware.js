@@ -1,3 +1,5 @@
+import TokenModel from '../models/TokenModel';
+
 class UserMiddleware {
   static create(req, res, next) {
     let error;
@@ -21,6 +23,18 @@ class UserMiddleware {
 
   static validatePhone(phone) {
     return /0[7-9][0|1][0-9]{8}/.test(phone);
+  }
+
+  static isAdmin(req, res, next) {
+    const token = req.header('x-auth');
+    TokenModel.decodeToken(token)
+      .then((user) => {
+        if (user.isAdmin) {
+          return next();
+        }
+        return res.status(401).send({ status: 401, error: 'Unauthorised user' });
+      })
+      .catch(() => res.status(401).send({ status: 401, error: 'Unauthorised user' }));
   }
 }
 

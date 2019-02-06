@@ -23,7 +23,7 @@ class UserController {
           status: 201,
           data: { token: result.token, user: result.user },
         }))
-      .catch(() => res.status(500).send({ status: 500, message: 'Internal server error' }));
+      .catch(() => res.status(500).send({ status: 500, error: 'Internal server error' }));
   }
 
   static loginUser(req, res) {
@@ -43,7 +43,7 @@ class UserController {
       })
       .catch(() => res.status(404).send({
         status: 404,
-        message: 'User not found',
+        error: 'User not found',
       }));
   }
 }
