@@ -4,42 +4,37 @@ class PartyController {
   static createParty(req, res) {
     const { name, hqAddress, logoUrl } = req.body;
     const body = { name, hqAddress, logoUrl };
-    const party = PartyModel.create(body);
-
-    return res.status(200).send({ status: 200, data: party });
+    PartyModel.create(body)
+      .then(createdParty => res.status(201).send({ status: 201, data: createdParty }))
+      .catch(() => res.status(500).send({ status: 500, error: 'Server error, please try again.' }));
   }
 
   static getAParty(req, res) {
     const { id } = req.params;
-    const party = PartyModel.getAParty(id);
-    if (party.length === 0) {
-      return res.status(404).send({ status: 404, msg: 'Resource not found' });
-    }
-    return res.status(200).send({ status: 200, data: party.shift() });
+    PartyModel.getAParty(id)
+      .then(returnedParty => res.status(200).send({ status: 200, data: returnedParty }))
+      .catch(() => res.status(404).send({ status: 404, error: 'Party not found.' }));
   }
 
   static listParty(req, res) {
-    const parties = PartyModel.findAll();
-    return res.status(200).send({ status: 200, data: parties });
+    PartyModel.findAll()
+      .then(parties => res.status(200).send({ status: 200, data: parties }))
+      .catch(() => res.status(404).send({ status: 404, error: 'No parties found.' }));
   }
 
   static deleteAParty(req, res) {
     const { id } = req.params;
-    const deleteStatus = PartyModel.deleteAParty(id);
-    if (deleteStatus === 0) {
-      return res.status(404).send({ status: 404, msg: 'Resource not found' });
-    }
-    return res.status(200).send({ status: 200, data: [{ message: 'Party successfully deleted' }] });
+    PartyModel.deleteAParty(id)
+      .then(party => res.status(200).send({ status: 200, error: `Successfully delete party with id ${party.id}` }))
+      .catch(() => res.status(404).send({ status: 404, error: 'No party found.' }));
   }
 
   static editAParty(req, res) {
     const { id } = req.params;
     const { name } = req.body;
-    const editedParty = PartyModel.editAParty(id, name);
-    if (editedParty === null) {
-      return res.status(404).send({ status: 404, msg: 'Resource not found' });
-    }
-    return res.status(200).send({ status: 200, data: editedParty });
+    PartyModel.editAParty(id, name)
+      .then(updatedParty => res.status(200).send({ status: 200, data: updatedParty }))
+      .catch(() => res.status(404).send({ status: 404, message: 'No party match found.' }));
   }
 }
 
