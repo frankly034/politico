@@ -1,4 +1,4 @@
-import parties from './partyData';
+import query from './db/connector';
 
 class PartyModel {
   constructor(party) {
@@ -8,39 +8,58 @@ class PartyModel {
     this.logoUrl = party.logoUrl;
   }
 
-  static create(party) {
-    const id = parties.length + 1;
-    const newParty = new PartyModel({ id, ...party });
-    parties.push(newParty);
-    return newParty;
+  static create(body) {
+    const attributes = ['name', 'hqAddress', 'logoUrl'];
+
+    const partyArray = attributes.map(attr => body[attr]);
+
+    const sql = 'INSERT INTO parties (name, "hqAddress", "logoUrl") VALUES ($1, $2, $3) RETURNING *';
+    return query(sql, partyArray)
+      .then((result) => {
+        const savedParty = new PartyModel(result.rows[0]);
+        return Promise.resolve(savedParty);
+      })
+      .catch(e => Promise.reject(e));
   }
 
   static getAParty(id) {
-    const foundParty = parties.filter(party => party.id === parseInt(id, 10));
-    return foundParty;
+    const sql = 'SELECT * FROM parties WHERE id = $1';
+    return query(sql, [id])
+      .then((result) => {
+        const foundParty = new PartyModel(result.rows[0]);
+        return Promise.resolve(foundParty);
+      })
+      .catch(e => Promise.reject(e));
   }
 
   static findAll() {
-    return parties;
+    const sql = 'SELECT * FROM parties';
+    return query(sql)
+      .then((result) => {
+        const parties = result.rows;
+        return Promise.resolve(parties);
+      })
+      .catch(e => Promise.reject(e));
   }
 
   static deleteAParty(id) {
-    const returnedParties = parties.filter(party => party.id !== parseInt(id, 10));
-    return returnedParties.length < parties.length ? 1 : 0;
+    const sql = 'DELETE FROM parties where id = $1 RETURNING *';
+    return query(sql, [id])
+      .then((result) => {
+        const party = result.rows[0];
+        return Promise.resolve(party);
+      })
+      .catch(e => Promise.reject(e));
   }
 
   static editAParty(id, name) {
-    let party = PartyModel.getAParty(id);
-    if (party.length !== 0) {
-      PartyModel.findAll().forEach((item) => {
-        if (item.id === parseInt(id, 10)) {
-          item.name = name;
-          party = item;
-        }
-      });
-      return party;
-    }
-    return null;
+    const sql = 'UPDATE parties SET name = $1 WHERE id = $2 RETURNING *';
+    return query(sql, [name, id])
+      .then((result) => {
+        const updatedParty = new PartyModel(result.rows[0]);
+        return Promise.resolve(updatedParty);
+      })
+      .catch(e => Promise.reject(e));
   }
 }
 
