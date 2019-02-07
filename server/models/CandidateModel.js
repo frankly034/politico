@@ -8,9 +8,7 @@ class CandidateModel {
     this.party = candidate.party;
   }
 
-  static create(body) {
-    const { candidate, office, party } = body;
-
+  static create(candidate, office, party) {
     const sql = 'INSERT INTO candidates (candidate, office, party) VALUES ($1, $2, $3) RETURNING *';
     return query(sql, [candidate, office, party])
       .then((result) => {

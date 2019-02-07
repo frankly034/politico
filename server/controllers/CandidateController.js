@@ -2,13 +2,15 @@ import CandidateModel from '../models/CandidateModel';
 
 class CandidateController {
   static createCandidate(req, res) {
-    CandidateModel.create(req.body)
+    const { office, party } = req.body;
+    const candidate = req.params.id;
+    CandidateModel.create(candidate, office, party)
       .then(createdCandidate => res.status(201).send({ status: 201, data: createdCandidate }))
       .catch((e) => {
         if (e.code > 23500) {
           return res.status(400).send({ status: 400, error: e.detail });
         }
-        return res.status(417).send({ status: 417, error: 'Excpectation failed.' });
+        return res.status(417).send({ status: 417, error: `Excpectation failed. ${e}` });
       });
   }
 
