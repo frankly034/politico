@@ -1,0 +1,8 @@
+node_modules/
+trials/
+package-lock.json
+.env
+_test.js
+node_modules/
+server/
+test.js
