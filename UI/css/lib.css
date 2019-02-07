@@ -573,6 +573,7 @@ a {
 
 .card-light {
     background-color: #ECF0F1;
+    background-color: #FCFFF5;
     color: #2C3E50;
 }
 
@@ -672,6 +673,10 @@ a {
         flex-direction: row;
     }
 
+    .flex-col-50 {
+        flex: 200px 1;
+    }
+
     .border-light-r-lg-1{
         border-right: #ECF0F1 solid 1px;
     }
@@ -719,6 +724,8 @@ a {
         justify-content: space-around;
         flex-wrap: wrap;
     }
+
+
 
     .modal form {
         width: 50%;
