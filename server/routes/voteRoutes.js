@@ -5,7 +5,7 @@ import UserMiddleware from '../middlewares/UserMiddleware';
 
 const router = express.Router();
 
-router.post('/votes', VoteController.vote);
+router.post('/votes', UserMiddleware.isUser, VoteController.vote);
 router.post('/office/:id/result', UserMiddleware.checkId, UserMiddleware.isUser, VoteController.genResult);
 
 export default router;

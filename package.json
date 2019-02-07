@@ -8,7 +8,7 @@
     "start": "node --require babel-register server/server.js",
     "server": "nodemon --require babel-register server/server.js",
     "schema": "node --require babel-register ./server/models/db/schemas/index",
-    "test": "nyc --reporter=text-lcov --reporter=text mocha --require babel-register server/test/**.test.js --exit || true",
+    "test": "npm run schema && nyc --reporter=text-lcov --reporter=text mocha --timeout 50000 --require babel-register server/test/**.test.js --exit || true",
     "coveralls": "nyc report --reporter=text-lcov npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
