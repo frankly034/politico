@@ -8,10 +8,10 @@ class OfficeMiddleware {
     return next();
   }
 
-  static getAnOffice(req, res, next) {
+  static checkId(req, res, next) {
     const { id } = req.params;
-    if (isNaN(parseInt(id, 10))) {
-      const error = { msg: 'Bad request', status: 400 };
+    if (Number.isNaN(parseInt(id, 10))) {
+      const error = { error: 'Parameter must be an integer.', status: 400 };
       return res.status(400).send(error);
     }
     return next();

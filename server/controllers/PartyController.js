@@ -6,7 +6,7 @@ class PartyController {
     const body = { name, hqAddress, logoUrl };
     PartyModel.create(body)
       .then(createdParty => res.status(201).send({ status: 201, data: createdParty }))
-      .catch(() => res.status(500).send({ status: 500, error: 'Server error, please try again.' }));
+      .catch(() => res.status(400).send({ status: 408, error: 'Request timed out, please try again.' }));
   }
 
   static getAParty(req, res) {
@@ -26,7 +26,12 @@ class PartyController {
     const { id } = req.params;
     PartyModel.deleteAParty(id)
       .then(party => res.status(200).send({ status: 200, error: `Successfully delete party with id ${party.id}` }))
-      .catch(() => res.status(404).send({ status: 404, error: 'No party found.' }));
+      .catch((e) => {
+        if (e.code === '42601') {
+          return res.status(400).send({ status: 400, error: 'Bad request. Party still holds reference in another table.' });
+        }
+        return res.status(404).send({ status: 404, error: 'No party found.' });
+      });
   }
 
   static editAParty(req, res) {

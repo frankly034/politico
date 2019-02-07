@@ -43,8 +43,8 @@ class PartyModel {
   }
 
   static deleteAParty(id) {
-    const sql = 'DELETE FROM parties where id = $1 RETURNING *';
-    return query(sql, [id])
+    const sql = 'DELETE FROM parties where id = $1 CASCADE RETURNING *';
+    return query(sql, [parseInt(id, 10)])
       .then((result) => {
         const party = result.rows[0];
         return Promise.resolve(party);
