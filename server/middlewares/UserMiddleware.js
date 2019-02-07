@@ -91,9 +91,9 @@ class UserMiddleware {
         if (user.id) {
           return next();
         }
-        return res.status(401).send({ status: 401, error: 'Unauthorised user' });
+        return res.status(401).send({ status: 401, error: 'You do not have permission to access this.' });
       })
-      .catch(() => res.status(401).send({ status: 401, error: 'Unauthorised user' }));
+      .catch(() => res.status(401).send({ status: 401, error: 'You do not have permission to access this.' }));
   }
 }
 
