@@ -79,9 +79,9 @@ class UserMiddleware {
         if (user.isAdmin) {
           return next();
         }
-        return res.status(401).send({ status: 401, error: 'You do not have permission to access this.' });
+        return res.status(401).send({ status: 401, error: 'You do not have permission to access this resource.' });
       })
-      .catch(() => res.status(401).send({ status: 401, error: 'You do not have permission to access this.' }));
+      .catch(() => res.status(401).send({ status: 401, error: 'You do not have permission to access this resource.' }));
   }
 
   static isUser(req, res, next) {
@@ -91,9 +91,9 @@ class UserMiddleware {
         if (user.id) {
           return next();
         }
-        return res.status(401).send({ status: 401, error: 'You do not have permission to access this.' });
+        return res.status(401).send({ status: 401, error: 'You do not have permission to access this resource.' });
       })
-      .catch(() => res.status(401).send({ status: 401, error: 'You do not have permission to access this.' }));
+      .catch(() => res.status(401).send({ status: 401, error: 'You do not have permission to access this resource.' }));
   }
 }
 
