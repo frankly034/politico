@@ -37,6 +37,10 @@ html, body, .wrapper {
     justify-content: center;
 }
 
+.flex-space-between {
+    justify-content: space-evenly;
+}
+
 .flex-1 {
     flex: 1;
 }
