@@ -18,7 +18,7 @@ const query = (sql, params) => {
       .catch((e) => {
         reject(e);
       });
-  });
+  })
 };
 
 export default query;
