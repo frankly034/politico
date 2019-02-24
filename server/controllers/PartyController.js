@@ -6,7 +6,12 @@ class PartyController {
     const body = { name, hqAddress, logoUrl };
     PartyModel.create(body)
       .then(createdParty => res.status(201).send({ status: 201, data: createdParty }))
-      .catch(() => res.status(400).send({ status: 408, error: 'Request timed out, please try again.' }));
+      .catch((e) => {
+        if (e.code === '23505') {
+          return res.status(400).send({ status: 400, error: 'Bad request. Party already exists.' });
+        }
+        return res.status(406).send({ status: 400, error: 'Bad Request: could not process request.' });
+      });
   }
 
   static getAParty(req, res) {
@@ -19,13 +24,13 @@ class PartyController {
   static listParty(req, res) {
     PartyModel.findAll()
       .then(parties => res.status(200).send({ status: 200, data: parties }))
-      .catch(() => res.status(404).send({ status: 404, error: 'No parties found.' }));
+      .catch(() => res.status(400).send({ status: 400, error: 'Bad Request: could not process request.' }));
   }
 
   static deleteAParty(req, res) {
     const { id } = req.params;
     PartyModel.deleteAParty(id)
-      .then(party => res.status(200).send({ status: 200, error: `Successfully delete party with id ${party.id}` }))
+      .then(party => res.status(200).send({ status: 200, data: { message: `Successfully delete party with id ${party.id}` } }))
       .catch((e) => {
         if (e.code === '42601') {
           return res.status(400).send({ status: 400, error: 'Bad request. Party still holds reference in another table.' });

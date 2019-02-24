@@ -4,39 +4,64 @@ class PartyMiddleware {
   }
 
   static create(req, res, next) {
-    const { name, hqAddress, logoUrl } = req.body;
-    let error;
-    if (!name || !hqAddress || !logoUrl) {
-      error = { error: 'Bad request: Missing field (name, headquarters address and logo url are required)', status: 400 };
-      return res.status(400).send(error);
-    }
+    let validationState = false;
+    let field;
+    const requiredFields = [
+      { name: 'name', type: 'string' },
+      { name: 'hqAddress', type: 'string' },
+      { name: 'logoUrl', type: 'string' },
+    ];
 
-    if (!name.trim() || !hqAddress.trim() || !logoUrl.trim()) {
-      error = { error: 'Bad request: Missing field (name, headquarters address and logo url are required)', status: 400 };
-      return res.status(400).send(error);
-    }
+    for (let i = 0; i < requiredFields.length; i += 1) {
+      field = requiredFields[i];
+      if (!req.body[field.name]) {
+        validationState = true;
+        return res.status(422).send({
+          error: `Unprocessable Entity: Missing ${field.name}, ${field.name} is required`,
+          status: 422,
+        });
+      }
+      if (!req.body[field.name].trim()) {
+        validationState = true;
+        return res.status(422).send({
+          error: `Unprocessable Entity: Empty ${field.name}, ${field.name} cannot be empty`,
+          status: 422,
+        });
+      }
 
-    if (!PartyMiddleware.validateString(name) || !PartyMiddleware.validateString(hqAddress)
-    || !PartyMiddleware.validateString(logoUrl)) {
-      error = { error: 'Bad request: name, headquarters address and logo url must be strings', status: 400 };
-      return res.status(400).send(error);
+      if (!PartyMiddleware.validateString(req.body[field.name])) {
+        validationState = true;
+        return res.status(422).send({
+          error: `Unprocessable Entity: ${field.name} is invalid, requires a valid string.`,
+          status: 422,
+        });
+      }
     }
-    return next();
+    if (!validationState) {
+      return next();
+    }
   }
 
   static checkBody(req, res, next) {
+    let validationState = true;
     const { name } = req.body;
-    let error;
-    if (!name || !name.trim()) {
-      error = { error: 'Bad request: Missing field name is required)', status: 400 };
-      return res.status(400).send(error);
+    if (!name) {
+      validationState = false;
+      return res.status(422).send({
+        error: 'Unprocessable Entity: Missing name, name is required',
+        status: 422,
+      });
     }
-
-    if (!PartyMiddleware.validateString(name)) {
-      error = { error: 'Bad request: name must be strings', status: 400 };
-      return res.status(400).send(error);
+    if (!name.trim()) {
+      validationState = false;
+      return res.status(422).send({
+        error: 'Unprocessable Entity: Empty name, name cannot be empty',
+        status: 422,
+      });
     }
-    return next();
+    if (validationState) {
+      return next();
+    }
   }
 
   static checkId(req, res, next) {

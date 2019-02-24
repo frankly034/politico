@@ -11,7 +11,12 @@ class PartyModel {
   static create(body) {
     const attributes = ['name', 'hqAddress', 'logoUrl'];
 
-    const partyArray = attributes.map(attr => body[attr]);
+    const partyArray = attributes.map((attr) => {
+      if (attr === 'name') {
+        return body[attr].toLowerCase().split(' ').map(word => `${word[0].toUpperCase()}${word.slice(1)}`).join(' ');
+      }
+      return body[attr];
+    });
 
     const sql = 'INSERT INTO parties (name, "hqAddress", "logoUrl") VALUES ($1, $2, $3) RETURNING *';
     return query(sql, partyArray)
@@ -43,7 +48,7 @@ class PartyModel {
   }
 
   static deleteAParty(id) {
-    const sql = 'DELETE FROM parties where id = $1 CASCADE RETURNING *';
+    const sql = 'DELETE FROM parties where id = $1 RETURNING *';
     return query(sql, [parseInt(id, 10)])
       .then((result) => {
         const party = result.rows[0];
