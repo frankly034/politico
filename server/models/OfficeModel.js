@@ -8,10 +8,17 @@ class OfficeModel {
   }
 
   static create(body) {
-    const { name, type } = body;
+    const attributes = ['name', 'type'];
+
+    const officeArray = attributes.map((attr) => {
+      if (attr === 'name') {
+        return body[attr].toLowerCase().split(' ').map(word => `${word[0].toUpperCase()}${word.slice(1)}`).join(' ');
+      }
+      return body[attr];
+    });
 
     const sql = 'INSERT INTO offices (name, type) VALUES ($1, $2) RETURNING *';
-    return query(sql, [name, type])
+    return query(sql, officeArray)
       .then((result) => {
         const savedOffice = new OfficeModel(result.rows[0]);
         return Promise.resolve(savedOffice);

@@ -1,11 +1,40 @@
 class OfficeMiddleware {
   static create(req, res, next) {
-    const { name, type } = req.body;
-    if (!name || !type) {
-      const error = { msg: 'name and type attributes are required', status: 400 };
-      return res.status(400).send(error);
+    let validationState = false;
+    let field;
+    const requiredFields = [
+      { name: 'name', type: 'string' },
+      { name: 'type', type: 'string' },
+    ];
+
+    for (let i = 0; i < requiredFields.length; i += 1) {
+      field = requiredFields[i];
+      if (!req.body[field.name]) {
+        validationState = true;
+        return res.status(422).send({
+          error: `Unprocessable Entity: Missing ${field.name}, ${field.name} is required`,
+          status: 422,
+        });
+      }
+      if (!req.body[field.name].trim()) {
+        validationState = true;
+        return res.status(422).send({
+          error: `Unprocessable Entity: Empty ${field.name}, ${field.name} cannot be empty`,
+          status: 422,
+        });
+      }
+
+      if (!OfficeMiddleware.validateString(req.body[field.name])) {
+        validationState = true;
+        return res.status(422).send({
+          error: `Unprocessable Entity: ${field.name} is invalid, requires a valid string`,
+          status: 422,
+        });
+      }
     }
-    return next();
+    if (!validationState) {
+      return next();
+    }
   }
 
   static checkId(req, res, next) {
@@ -15,6 +44,10 @@ class OfficeMiddleware {
       return res.status(400).send(error);
     }
     return next();
+  }
+
+  static validateString(str) {
+    return !parseInt(str, 10);
   }
 }
 
