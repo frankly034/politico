@@ -5,7 +5,16 @@ class VoteController {
     const { office, candidate, createdBy } = req.body;
     VoteModel.create(office, candidate, createdBy)
       .then(createdVote => res.status(201).send({ status: 201, data: createdVote }))
-      .catch(e => res.status(400).send({ status: 400, message: `Bad request, you have already voted for this office. ${e.detail}` }));
+      .catch((e) => {
+        switch (e.code) {
+          case '23503':
+            return res.status(400).send({ status: 400, message: 'Bad Request: Invalid candidate' });
+          case '23505':
+            return res.status(400).send({ status: 400, message: 'Bad Request: duplicate vote' });
+          default: break;
+        }
+        return res.status(422).send({ status: 422, message: 'Unprocessable Entity: Invalid request body' });
+      });
   }
 
   static genResult(req, res) {
