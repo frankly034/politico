@@ -22,7 +22,6 @@ class VoteModel {
     const sql = 'SELECT office, candidate, COUNT(candidate) FROM votes WHERE office = $1 GROUP BY candidate, office'; 
     return query(sql, [office])
       .then((result) => {
-        console.log('model', result.rows);
         return Promise.resolve(result.rows);
       })
       .catch(e => Promise.reject(e));

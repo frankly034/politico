@@ -47,18 +47,18 @@ class UserModel {
           },
         });
       })
-      .catch((e) => {
-        Promise.reject(new Error(e));
-      });
+      .catch(e => Promise.reject(new Error(e)));
   }
 
   save() {
     const user = this;
-
-    if (user.isAdmin === 'TRUE' || user.isAdmin === 'true') {
-      user.isAdmin = true;
-    } else {
-      user.isAdmin = false;
+    const { isAdmin } = user;
+    if (user.isAdmin) {
+      if (isAdmin.toLowerCase() === 'true') {
+        user.isAdmin = true;
+      } else {
+        user.isAdmin = false;
+      }
     }
 
     const attributes = ['firstname', 'lastname', 'othername', 'email', 'phoneNumber', 'passportUrl', 'password', 'isAdmin'];

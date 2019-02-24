@@ -6,8 +6,6 @@ import userRoute from './routes/userRoutes';
 import candidateRoute from './routes/candidateRoute';
 import voteRoute from './routes/voteRoutes';
 
-// envSetup();
-
 const port = process.env.PORT || 3000;
 const app = express();
 const apiUrlVersion1 = '/api/v1';
@@ -22,7 +20,9 @@ app.use(apiUrlVersion1, candidateRoute);
 app.use(apiUrlVersion1, voteRoute);
 
 if (!module.parent) {
-  app.listen(port);
+  app.listen(port, ()=> {
+    console.log(`app running on port ${port}`)
+  });
 }
 
 export default app;

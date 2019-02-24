@@ -3,3 +3,5 @@ node_modules/
 _test.js
 test.js
 server/test/userModel.test.js
+server/models/db/configData.js
+.nyc_output/

@@ -20,10 +20,10 @@ class TokenModel {
   static generateToken(access, user) {
     const token = new TokenModel();
     const {
-      id, firstname, lastname, othername, email, phoneNumber, passportUrl, isAdmin,
+      id, email, isAdmin,
     } = user;
     return Promise.resolve(jwt.sign({
-      id, firstname, lastname, othername, email, phoneNumber, passportUrl, isAdmin, access,
+      id, email, isAdmin, access,
     }, token.getSalt()).toString());
   }
 

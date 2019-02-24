@@ -8,7 +8,7 @@
     "start": "node --require babel-register server/server.js",
     "server": "nodemon --require babel-register server/server.js",
     "schema": "node --require babel-register ./server/models/db/schemas/index",
-    "test": "nyc --reporter=text-lcov --reporter=text mocha --require babel-register server/test/**.test.js --exit || true",
+    "test": "npm run schema && nyc --reporter=text-lcov --reporter=text mocha --timeout 50000 --require babel-register server/test/**.test.js --exit || true",
     "coveralls": "nyc report --reporter=text-lcov npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -18,13 +18,18 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.1.0",
+    "rewire": "^4.0.1",
+    "sinon": "^7.2.3",
+    "sinon-chai": "^3.3.0",
     "supertest": "^3.4.2"
   },
   "dependencies": {
